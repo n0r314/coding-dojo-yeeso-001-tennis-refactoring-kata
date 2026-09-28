@@ -1,34 +1,36 @@
-_Support this and all my katas via [Patreon](https://www.patreon.com/EmilyBache)_
 
-# Tennis Refactoring Kata
+# Le Scénario
 
-You can find out more about this exercise and where it comes from in [this YouTube video](https://youtu.be/XifUs1FhWRc). There are also some Guided Learning Hour videos that include demos of me solving parts of it.
+Imaginez que vous travaillez pour une société de conseil et que l'un de vos collègues a réalisé une prestation pour la Tennis Society. Le contrat prévoit 10 heures de travail facturables et votre collègue y a consacré 8,5 heures. Malheureusement, il est tombé malade. Il affirme avoir terminé le travail et que tous les tests passent avec succès. Votre responsable vous demande de prendre le relais. Elle souhaite que vous passiez environ une heure sur le code afin de pouvoir facturer la totalité des 10 heures au client. Elle vous demande de nettoyer un peu le code et éventuellement de prendre des notes afin de faire un retour à votre collègue sur ses choix de conception. Vous devez également vous préparer à expliquer à votre responsable la valeur de ce travail de refactorisation, au-delà de la simple heure facturable supplémentaire.
 
-* [Refactoring: What you need to know](https://youtu.be/K7xSsNpeM8I) - includes demo of TennisGame3 in C#
-* [Refactoring Skills: Extract Function](https://youtu.be/lOAktlPd8uk) - includes demo of TennisGame6 in C#
+La suite de tests fournie pour la classe `TennisGameImpl` est complète et rapide à exécuter. Vous ne devriez pas avoir besoin de modifier les tests, mais seulement de les exécuter fréquemment au fur et à mesure de votre refactorisation.
 
-# The Scenario
+Si vous aimez ce Kata, vous pourriez être intéressé(e) par [les livres d'Emily Bache](https://leanpub.com/u/emilybache) et le site [SammanCoaching.org](https://sammancoaching.org).
 
-Imagine you work for a consultancy company, and one of your colleagues has been doing some work for the Tennis Society. The contract is for 10 hours billable work, and your colleague has spent 8.5 hours working on it. Unfortunately he has now fallen ill. He says he has completed the work, and the tests all pass. Your boss has asked you to take over from him. She wants you to spend an hour or so on the code so she can bill the client for the full 10 hours. She instructs you to tidy up the code a little and perhaps make some notes so you can give your colleague some feedback on his chosen design. You should also prepare to talk to your boss about the value of this refactoring work, over and above the extra billable hours.
+## Description du Kata
 
-There are several versions of this refactoring kata, each with their own design smells and challenges. I suggest you start with the first one, with the class "TennisGame1". The test suite provided is fairly comprehensive, and fast to run. You should not need to change the tests, only run them often as you refactor.
+Le tennis possède un système de comptage des points assez particulier, et pour les personnes qui découvrent ce sport, il peut être un peu difficile à suivre. La Tennis Society vous a engagé(e) pour concevoir un tableau d'affichage permettant d'afficher le score en cours pendant les jeux de tennis.
 
-There is a deliberate error in several of the implementations - the player names are hard-coded to "player1" and "player2". After you refactor, you may want to fix this problem and add suitable test cases to prove your fix works.
+Vous pouvez en savoir plus sur le décompte des points au tennis sur Wikipédia, résumé ci-dessous :
 
-If you like this Kata, you may be interested in [my books](https://leanpub.com/u/emilybache) and website [SammanCoaching.org](https://sammancoaching.org)
+    Un jeu est remporté par le premier joueur ayant marqué au moins quatre points au total et au moins deux points de plus que son adversaire.
+    Le score au cours d'un jeu est décrit d'une manière propre au tennis : les scores de zéro à trois points sont décrits respectivement par « Zéro », « Quinze », « Trente » et « Quarante ».
+    Si au moins trois points ont été marqués par chaque joueur et que les scores sont égaux, le score est « Égalité ».
+    Si au moins trois points ont été marqués par chaque joueur et qu'un joueur a un point de plus que son adversaire, le score du jeu est « Avantage » pour le joueur en tête.
 
-## Kata Description
+Vous devez uniquement indiquer le score du jeu en cours. Les sets et les matches sont hors périmètre.
 
-Here is a description of the problem this code is designed to solve: [Tennis Kata](https://sammancoaching.org/kata_descriptions/tennis.html).
+[Source en anglais](https://sammancoaching.org/kata_descriptions/tennis.html).
 
-## Questions to discuss afterwards
+## Questions de discussion
 
-* How did it feel to work with such fast, comprehensive tests?
-* Did you make mistakes while refactoring that were caught by the tests?
-* If you used a tool to record your test runs, review it. Could you have taken smaller steps? Made fewer refactoring mistakes?
-* Did you ever make any refactoring mistakes and then back out your changes? How did it feel to throw away code?
-* What would you say to your colleague if they had written this code?
-* What would you say to your boss about the value of this refactoring work? Was there more reason to do it over and above the extra billable hour or so?
+* Qu'avez-vous ressenti en travaillant avec des tests aussi rapides et complets ?
+* Avez-vous commis des erreurs lors de la refactorisation qui ont été détectées par les tests ?
+* Si vous avez utilisé un outil pour enregistrer vos passages de tests, analysez-le. Auriez-vous pu faire des étapes plus petites ? Commettre moins d'erreurs de refactorisation ?
+* Avez-vous déjà fait des erreurs de refactorisation et dû annuler vos changements ? Qu'avez-vous ressenti à l'idée d'abandonner du code ?
+* Que diriez-vous à votre collègue s'il avait écrit ce code ?
+* Que diriez-vous à votre responsable au sujet de la valeur de ce travail de refactorisation ? Y avait-il d'autres raisons de le faire au-delà de l'heure facturable supplémentaire ?
 
-## Code Reading Practice
-Test your code reading skills. Here is a description of what to do: [Scanning for Code Smells](https://sammancoaching.org/exercises/code_reading.html). There are suitable lists of urls to open in some of the language subdirectories.
+## Pratique de lecture de code
+
+Testez vos compétences de lecture de code. Voici une description de l'exercice : [Scanning for Code Smells](https://sammancoaching.org/exercises/code_reading.html).
