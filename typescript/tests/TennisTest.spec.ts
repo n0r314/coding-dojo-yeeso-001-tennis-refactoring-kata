@@ -1,0 +1,38 @@
+import { expect } from 'chai';
+import * as fs from 'fs';
+import * as path from 'path';
+import { describe, it } from 'vitest';
+import { TennisGame, TennisGameImpl } from '../src';
+
+function getAllScores(): Array<[number, number, string]> {
+  const testCases = path.resolve(__dirname, 'scores.json');
+  const scoreData = fs.readFileSync(testCases).toString();
+  const scores = JSON.parse(scoreData);
+  return JSON.parse(JSON.stringify(scores));
+}
+
+const scores: Array<[number, number, string]> = getAllScores();
+
+function checkScore(game: TennisGame, player1Score: number, player2Score: number, expectedScore: string): void {
+  const highestScore: number = Math.max(player1Score, player2Score);
+  for (let i = 0; i < highestScore; i++) {
+    if (i < player1Score) {
+      game.wonPoint('joueur1');
+    }
+    if (i < player2Score) {
+      game.wonPoint('joueur2');
+    }
+  }
+  expect(game.getScore()).to.be.equals(expectedScore);
+}
+
+describe('TennisGame', function () {
+  describe('TennisGameImpl', function () {
+    scores.forEach(([player1Score, player2Score, expectedScore]) => {
+      it(`scores ${player1Score}:${player2Score} as ${expectedScore}`, function () {
+        checkScore(new TennisGameImpl('joueur1', 'joueur2'), player1Score, player2Score, expectedScore);
+      });
+    });
+  });
+
+});
