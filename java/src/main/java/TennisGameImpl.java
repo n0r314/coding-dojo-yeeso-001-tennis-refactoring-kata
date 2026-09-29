@@ -1,36 +1,35 @@
 
 public class TennisGameImpl implements TennisGame {
-    
-    private int p2;
-    private int p1;
-    private String p1N;
-    private String p2N;
 
-    public TennisGameImpl(String p1N, String p2N) {
-        this.p1N = p1N;
-        this.p2N = p2N;
+    private Player player1;
+    private Player player2;
+
+    public TennisGameImpl(String player1, String player2) {
+        this.player1 = new Player(player1);
+        this.player2 = new Player(player2);
     }
 
     public String getScore() {
-        String s;
-        if (p1 < 4 && p2 < 4 && !(p1 + p2 == 6)) {
-            String[] p = new String[]{"Zéro", "Quinze", "Trente", "Quarante"}; 
-            s = p[p1];
-            return s + "-" + p[p2];
-        } else {
-            if (p1 == p2)
-                return "Égalité";
-            s = p1 > p2 ? p1N : p2N;
-            return ((p1-p2)*(p1-p2) == 1) ? "Avantage " + s : "Jeu " + s;
-        }
+        int score1 = player1.getScore();
+        int score2 = player2.getScore();
+        if (score1 < 4 && score2 < 4 && !(score1 + score2 == 6)) {
+            return Score.fromPoint(score1).getName() + "-" + Score.fromPoint(score2).getName();
+        } 
+        return isEquality(score1, score2);
     }
     
     public void wonPoint(String playerName) {
-        if (playerName == "joueur1")
-            this.p1 += 1;
+        if (playerName == player1.getName())
+            player1.wonPoint();
         else
-            this.p2 += 1;
-        
+            player2.wonPoint();
     }
 
+    private String isEquality(int score1, int score2) {
+        if (score1 == score2) {
+            return "Égalité";
+        }
+        String winningName = score1 > score2 ? player1.getName() : player2.getName();
+        return ((score1-score2)*(score1-score2) == 1) ? "Avantage " + winningName : "Jeu " + winningName; 
+    }
 }
